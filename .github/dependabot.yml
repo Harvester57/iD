@@ -9,13 +9,17 @@ updates:
     groups:
       # Specify a name for the group, which will be used in pull request titles
       # and branch names
-      npm-dependencies:
-        # Define patterns to include dependencies in the group (based on
-        # dependency name)
+      npm-prod-dependencies:
         applies-to: version-updates # Applies the group rule to version updates
-        patterns:
-          - "*"       # A wildcard that matches all dependencies in the package
-                      # ecosystem. Note: using "*" may open a large pull request
+        dependency-type: "production"
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      npm-dev-dependencies:
+        dependency-type: "development"
+        applies-to: version-updates # Applies the group rule to version updates
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -26,8 +30,6 @@ updates:
       # Specify a name for the group, which will be used in pull request titles
       # and branch names
       actions-dependencies:
-        # Define patterns to include dependencies in the group (based on
-        # dependency name)
         applies-to: version-updates # Applies the group rule to version updates
         patterns:
           - "*"       # A wildcard that matches all dependencies in the package
