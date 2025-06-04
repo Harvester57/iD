@@ -24,6 +24,8 @@ jobs:
           path: './id-tagging-schema'
       - run: npm clean-install
         working-directory: './id-tagging-schema'
+      - run: npm audit signatures
+        working-directory: './id-tagging-schema'
       - run: npm run translations
         working-directory: './id-tagging-schema'
         env:
@@ -34,6 +36,7 @@ jobs:
       - run: mkdir dist/id-tagging-schema && mv id-tagging-schema/dist dist/id-tagging-schema/dist
       # build iD using freshest version of presets and ELI
       - run: npm clean-install
+      - run: npm audit signatures
       - run: npm install editor-layer-index
       - run: mkdir dist/data
       - run: npm run imagery
