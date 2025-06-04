@@ -22,12 +22,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4.2.2
-    - name: Audit for vulnerabilities
-      run: npm audit --audit-level=moderate --omit=dev --include=prod
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4.4.0
       with:
         node-version: ${{ matrix.node-version }}
+    - name: Audit for vulnerabilities
+      run: npm audit --audit-level=moderate --omit=dev --include=prod
     - run: npm clean-install
       env:
         FORCE_COLOR: 2
