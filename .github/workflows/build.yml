@@ -27,7 +27,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Audit for vulnerabilities
-      run: npm audit --audit-level=moderate --omit=dev --include=prod
+      run: npm audit --audit-level=info --production
     - run: npm clean-install
       env:
         FORCE_COLOR: 2
