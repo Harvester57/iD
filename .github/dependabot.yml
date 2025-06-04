@@ -1,10 +1,7 @@
-# Please see the documentation for all configuration options:
-# https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
-
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: "npm" # See documentation for possible values
+    directory: "/" # Location of package manifests
     schedule:
       # Check for updates to GitHub Actions every weekday
       interval: "cron"
@@ -16,8 +13,9 @@ updates:
         # Define patterns to include dependencies in the group (based on
         # dependency name)
         applies-to: version-updates # Applies the group rule to version updates
-    labels:
-      - "chore-dependabot"
+        patterns:
+          - "*"       # A wildcard that matches all dependencies in the package
+                      # ecosystem. Note: using "*" may open a large pull request
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -31,5 +29,6 @@ updates:
         # Define patterns to include dependencies in the group (based on
         # dependency name)
         applies-to: version-updates # Applies the group rule to version updates
-    labels:
-      - "chore-dependabot"
+        patterns:
+          - "*"       # A wildcard that matches all dependencies in the package
+                      # ecosystem. Note: using "*" may open a large pull request
