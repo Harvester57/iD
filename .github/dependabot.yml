@@ -6,12 +6,30 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "daily"
+      # Check for updates to GitHub Actions every weekday
+      interval: "cron"
+      cronjob: "0 18 * * *"
+    groups:
+      # Specify a name for the group, which will be used in pull request titles
+      # and branch names
+      npm-dependencies:
+        # Define patterns to include dependencies in the group (based on
+        # dependency name)
+        applies-to: version-updates # Applies the group rule to version updates
     labels:
       - "chore-dependabot"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "daily"
+      # Check for updates to GitHub Actions every weekday
+      interval: "cron"
+      cronjob: "0 18 * * *"
+    groups:
+      # Specify a name for the group, which will be used in pull request titles
+      # and branch names
+      actions-dependencies:
+        # Define patterns to include dependencies in the group (based on
+        # dependency name)
+        applies-to: version-updates # Applies the group rule to version updates
     labels:
       - "chore-dependabot"
