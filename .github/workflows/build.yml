@@ -34,6 +34,8 @@ jobs:
     - run: npm audit signatures
       env:
         FORCE_COLOR: 2
+    - name: Run ESLint
+      run: eslint . --ext .js,.jsx,.ts,.tsx
     - run: npm run all
       env:
         FORCE_COLOR: 2
