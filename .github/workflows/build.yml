@@ -23,7 +23,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4.2.2
     - name: Audit for vulnerabilities
-      run: npm audit --audit-level=moderate
+      run: npm audit --audit-level=moderate --omit=dev
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4.4.0
       with:
