@@ -10,16 +10,11 @@ updates:
       # Specify a name for the group, which will be used in pull request titles
       # and branch names
       npm-prod-dependencies:
-        applies-to: version-updates # Applies the group rule to version updates
+        applies-to: version-updates
         dependency-type: "production"
-  - package-ecosystem: "npm"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-    groups:
       npm-dev-dependencies:
         dependency-type: "development"
-        applies-to: version-updates # Applies the group rule to version updates
+        applies-to: version-updates
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
