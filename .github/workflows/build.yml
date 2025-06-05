@@ -23,6 +23,10 @@ jobs:
       matrix:
         node-version: ['20', '22']
 
+    permissions:
+      contents: read
+      id-token: write
+
     steps:
     - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
     - name: Use Node.js ${{ matrix.node-version }}
@@ -41,3 +45,6 @@ jobs:
       with:
         use_oidc: true
         disable_telem: true
+    - name: Create SBOM step
+      # see for usage: https://www.npmjs.com/package/%40cyclonedx/cyclonedx-npm
+      run: npx @cyclonedx/cyclonedx-npm --help
