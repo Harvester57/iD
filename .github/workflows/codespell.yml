@@ -11,8 +11,13 @@ jobs:
     name: Check for spelling errors
     runs-on: ubuntu-latest
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@002fdce3c6a235733a90a27c80493a3241e56863 # v2.12.1
+        with:
+          egress-policy: audit
+
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-      - uses: codespell-project/actions-codespell@406322ec52dd7b488e48c1c4b82e2a8b3a1bf630
+      - uses: step-security/actions-codespell@8664d8537142419fa42d0a49dcb326d2cac4eeab # v2.1.2
         with:
           check_filenames: true
           skip: ./.git,./data/territory_languages.json,./data/imagery.json,./data/languages.json,./data/address_formats.json,./dist/locales,./docs/img,./dist/img,./css,package.json,package-lock.json,scripts,docs
