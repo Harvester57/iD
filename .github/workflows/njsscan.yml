@@ -38,7 +38,7 @@ jobs:
       uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
     - name: nodejsscan scan
       id: njsscan
-      uses: Harvester57/njsscan-action@83014613fd8fa585c44152ec3a8f9e3b26eeb19f # v1.0.0-beta6
+      uses: Harvester57/njsscan-action@4a04169f6783a8a504fa68e3ca3710e63391fbc4 # v1.0.0-beta7
       with:
         args: '. --sarif --output results.sarif || true'
     - name: Upload njsscan report
