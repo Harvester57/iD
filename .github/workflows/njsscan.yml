@@ -40,8 +40,8 @@ jobs:
       id: njsscan
       uses: Harvester57/njsscan-action@ca3f6744f8ccb65b5dd76f10b0ea029bf41a87e2 # v1.0.0-beta10
       with:
-        args: '. --sarif --output results.sarif || true'
+        args: '. --sarif --output /tmp/results.sarif || true'
     - name: Upload njsscan report
       uses: github/codeql-action/upload-sarif@181d5eefc20863364f96762470ba6f862bdef56b
       with:
-        sarif_file: results.sarif
+        sarif_file: /tmp/results.sarif
