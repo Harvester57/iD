@@ -8,6 +8,9 @@ updates:
   schedule:
     interval: "cron"
     cronjob: "0 7 * * *"
+  ignore:
+  - dependency-name: "*"
+    update-types: [ "version-update:semver-major" ]
   groups:
     npm-prod-dependencies:
       applies-to: version-updates
