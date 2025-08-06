@@ -40,7 +40,7 @@ jobs:
       id: njsscan
       uses: Harvester57/njsscan-action@v1.0.0-beta13
       with:
-        args: '. --sarif --output /tmp/results.sarif'
+        args: '/github/workspace --sarif --output /tmp/results.sarif'
     - name: Upload njsscan report
       uses: github/codeql-action/upload-sarif@181d5eefc20863364f96762470ba6f862bdef56b
       with:
