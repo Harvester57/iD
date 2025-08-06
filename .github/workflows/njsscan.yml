@@ -39,7 +39,9 @@ jobs:
 
     - name: nodejsscan scan
       id: njsscan
-      uses: Harvester57/njsscan-action@v1.0.0-beta15
+      uses: Harvester57/njsscan-action@v1.0.0-beta16
+      with:
+        args: '--sarif -o /github/workspace/results.sarif /github/workspace/modules'
 
     - name: Upload njsscan report
       uses: github/codeql-action/upload-sarif@181d5eefc20863364f96762470ba6f862bdef56b
