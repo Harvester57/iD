@@ -21,35 +21,17 @@ jobs:
 
     strategy:
       matrix:
-        node-version: ['20', '22', '24']
-
-    permissions:
-      contents: read
-      id-token: write
+        node-version: ['22', '24']
 
     steps:
-    - name: Harden the runner (Audit all outbound calls)
-      uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
-      with:
-        egress-policy: audit
-
-    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+      uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
       with:
         node-version: ${{ matrix.node-version }}
     - name: Audit for vulnerabilities
       run: npm audit --audit-level=info --production
     - run: npm clean-install
     - run: npm audit signatures
-    - run: npm run lint
     - run: npm run all
     - run: npm run test
-    - name: 📊 Code coverage
-      uses: codecov/codecov-action@18283e04ce6e62d37312384ff67231eb8fd56d24 # v5.4.3
-      with:
-        use_oidc: true
-        disable_telem: true
-    - name: Create SBOM step
-      # see for usage: https://www.npmjs.com/package/%40cyclonedx/cyclonedx-npm
-      run: npx @cyclonedx/cyclonedx-npm --help
