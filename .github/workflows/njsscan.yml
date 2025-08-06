@@ -36,11 +36,11 @@ jobs:
 
     - name: Checkout the code
       uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
     - name: nodejsscan scan
       id: njsscan
-      uses: Harvester57/njsscan-action@v1.0.0-beta13
-      with:
-        args: '/github/workspace --sarif --output /tmp/results.sarif'
+      uses: Harvester57/njsscan-action@v1.0.0-beta14
+
     - name: Upload njsscan report
       uses: github/codeql-action/upload-sarif@181d5eefc20863364f96762470ba6f862bdef56b
       with:
